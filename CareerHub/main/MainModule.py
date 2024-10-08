@@ -11,9 +11,9 @@ def main_menu():
     db_manager = DatabaseManager()
 
     
-    print("Initializing database schema...")
+    print("Initializing Database...")
     db_manager.initialize_database()
-    print("Database initialized successfully.")
+    print("Database initialized Successfully.")
 
     while True:
         print("\n--- Job Board Application ---")
@@ -27,7 +27,7 @@ def main_menu():
         print("8. View Applications for a Specific Job")
         print("9. Exit")
 
-        choice = input("Enter your choice: ")
+        choice = input("Enter your Choice: ")
 
         if choice == "1":
             post_job(db_manager)
@@ -46,7 +46,7 @@ def main_menu():
         elif choice == "8":
             view_applications_for_job(db_manager)
         elif choice == "9":
-            print("Exiting the application.")
+            print("Exiting Application...")
             sys.exit()
         else:
             print("Invalid choice, please try again.")
@@ -58,7 +58,7 @@ def post_job(db_manager):
         job_description = input("Enter Job Description: ")
         job_location = input("Enter Job Location: ")
         salary = float(input("Enter Salary: "))
-        job_type = input("Enter Job Type (Full-time/Part-time/Contract): ")
+        job_type = input("Enter Job Type (Full-Time/Part-Time/Contract): ")
         posted_date = datetime.now()
 
         job_listing = JobListing(
@@ -73,9 +73,9 @@ def post_job(db_manager):
         )
 
         db_manager.insert_job_listing(job_listing)
-        print(f"Job '{job_title}' posted successfully.")
+        print(f"Job '{job_title}' Posted Successfully.")
     except Exception as e:
-        print(f"Error posting job: {str(e)}")
+        print(f"Error, Posting Job: {str(e)}")
 
 def register_company(db_manager):
     try:
@@ -89,9 +89,9 @@ def register_company(db_manager):
         )
 
         db_manager.insert_company(company)
-        print(f"Company '{company_name}' registered successfully.")
+        print(f"Company '{company_name}' Registered Successfully.")
     except Exception as e:
-        print(f"Error registering company: {str(e)}")
+        print(f"Error, Registering Company: {str(e)}")
 
 def register_applicant(db_manager):
     try:
@@ -111,9 +111,9 @@ def register_applicant(db_manager):
         )
 
         db_manager.insert_applicant(applicant)
-        print(f"Applicant '{first_name} {last_name}' registered successfully.")
+        print(f"Applicant '{first_name} {last_name}' Registered Successfully.")
     except Exception as e:
-        print(f"Error registering applicant: {str(e)}")
+        print(f"Error, Registering Applicant: {str(e)}")
 
 def apply_for_job(db_manager):
     try:
@@ -131,9 +131,9 @@ def apply_for_job(db_manager):
         )
 
         db_manager.insert_job_application(job_application)
-        print(f"Application submitted for Job ID {job_id} by Applicant ID {applicant_id}.")
+        print(f"Application Submitted for Job ID {job_id} by Applicant ID {applicant_id}.")
     except Exception as e:
-        print(f"Error submitting job application: {str(e)}")
+        print(f"Error, Submitting Job Application: {str(e)}")
 
 def view_job_listings(db_manager):
     try:
@@ -142,7 +142,7 @@ def view_job_listings(db_manager):
         for job in job_listings:
             print(f"Job ID: {job.job_id}, Title: {job.job_title}, Company ID: {job.company_id}, Location: {job.job_location}, Salary: {job.salary}, Type: {job.job_type}, Posted Date: {job.posted_date}")
     except Exception as e:
-        print(f"Error retrieving job listings: {str(e)}")
+        print(f"Error, Retrieving Job Listings: {str(e)}")
 
 def view_companies(db_manager):
     try:
@@ -151,7 +151,7 @@ def view_companies(db_manager):
         for company in companies:
             print(f"Company ID: {company.company_id}, Name: {company.company_name}, Location: {company.location}")
     except Exception as e:
-        print(f"Error retrieving companies: {str(e)}")
+        print(f"Error, Retrieving Companies: {str(e)}")
 
 def view_applicants(db_manager):
     try:
@@ -160,7 +160,7 @@ def view_applicants(db_manager):
         for applicant in applicants:
             print(f"Applicant ID: {applicant.applicant_id}, Name: {applicant.first_name} {applicant.last_name}, Email: {applicant.email}, Phone: {applicant.phone}")
     except Exception as e:
-        print(f"Error retrieving applicants: {str(e)}")
+        print(f"Error, Retrieving Applicants: {str(e)}")
 
 def view_applications_for_job(db_manager):
     try:
@@ -170,7 +170,7 @@ def view_applications_for_job(db_manager):
         for application in applications:
             print(f"Application ID: {application.application_id}, Applicant ID: {application.applicant_id}, Application Date: {application.application_date}, Cover Letter: {application.cover_letter}")
     except Exception as e:
-        print(f"Error retrieving applications for job: {str(e)}")
+        print(f"Error, Retrieving Applications for job: {str(e)}")
 
 if __name__ == "__main__":
     main_menu()
